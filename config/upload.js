@@ -4,7 +4,7 @@ const { GridFsStorage } = require("multer-gridfs-storage");
 const privateValue = require("./env");
 
 var storage = new GridFsStorage({
-    url: "mongodb://127.0.0.1:27017/VegatableShop",
+    url: privateValue.urlMongo + privateValue.databaseVegetable,
     options: { useNewUrlParser: true, useUnifiedTopology: true },
     file: (req, file) => {
         const match = ["image/png", "image/jpeg"];
