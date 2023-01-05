@@ -1,22 +1,23 @@
-﻿const env = require("dotenv");
+﻿const privateValue = require("./env");
 const mongoose = require("mongoose");
 
 //set up mongoose
 mongoose.set('strictQuery', false);
 
 async function connectMongoose() {
-    try {
+    console.log(privateValue.urlMongo + privateValue.databaseVegetable);
+    try{
         await mongoose.connect(
-            "mongodb+srv://admin-Loi:Han12022021@cluster0.cdpzsch.mongodb.net/VegatableShop?retryWrites=true&w=majority",
+            privateValue.urlMongo + privateValue.databaseVegetable,
             { useNewUrlParser: true, useUnifiedTopology: true },
             () => {
                 console.log("Connected to MongoDB");
             }
         );
     }
-    catch (e) {
+    catch(e){
         console.log("Disconnect to mongoDB");
     }
 }
 
-module.exports = { connectMongoose };
+module.exports = {connectMongoose};
